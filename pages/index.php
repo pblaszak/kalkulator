@@ -46,7 +46,7 @@ ERROR;
 	?>
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Admin</b>LTE</a>
+      <a href="#" class="h1"><b>Kalkulator</b> Spalania</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Logowanie użytkownika</p>
