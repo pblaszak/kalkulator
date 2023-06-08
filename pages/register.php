@@ -34,7 +34,7 @@ ERROR;
 
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="./index.php" class="h1"><b>Admin</b>LTE</a>
+      <a href="./index.php" class="h1"><b>Kalkulator</b> <b>Spalania</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Zarejestruj nowego użytkownika</p>
@@ -101,44 +101,23 @@ ERROR;
               <span class="fas fa-calendar"></span>
             </div>
           </div>
-        </div>
-
-        <div class="input-group mb-3">
-          <select class="form-control" name="city_id">
-            <?php
-              require_once "../scripts/connect.php";
-              $sql = "SELECT id, city FROM cities";
-              $result = $conn->query($sql);
-              while ($city = $result->fetch_assoc()){
-                echo "<option value='$city[id]'>$city[city]</option>";
-              }
-            ?>
-
-          </select>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-city"></span>
-            </div>
-          </div>
-        </div>
-
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="agreeTerms" name="terms" value="agree">
               <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
+               Przeczytałem i akceptuję Regulamin <a href="#"></a>
               </label>
             </div>
           </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block">Zarejestruj</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <a href="./index.php" class="text-center">I already have a membership</a>
+      <a href="./index.php" class="text-center">Jestem już zarejestrowany</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
