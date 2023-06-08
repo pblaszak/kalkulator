@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Cze 08, 2023 at 10:50 AM
+-- Generation Time: Cze 08, 2023 at 12:58 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -83,7 +83,10 @@ INSERT INTO `logs` (`id`, `user_id`, `status`, `address_ip`, `created_at`) VALUE
 (1, 1, 1, '77.88.99.10', '2023-05-21 14:55:23'),
 (2, 1, 1, '127.0.0.1', '2023-05-21 15:00:58'),
 (3, 2, 1, '127.0.0.1', '2023-05-21 15:01:18'),
-(4, 2, 0, '127.0.0.1', '2023-05-21 15:02:08');
+(4, 2, 0, '127.0.0.1', '2023-05-21 15:02:08'),
+(5, 3, 1, '::1', '2023-06-08 11:12:27'),
+(6, 3, 1, '::1', '2023-06-08 11:23:52'),
+(7, 3, 1, '::1', '2023-06-08 12:37:00');
 
 -- --------------------------------------------------------
 
@@ -134,7 +137,7 @@ INSERT INTO `states` (`id`, `country_id`, `state`) VALUES
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `city_id` int(10) UNSIGNED NOT NULL,
+  `city_id` int(10) UNSIGNED DEFAULT NULL,
   `role_id` tinyint(4) NOT NULL DEFAULT 1,
   `email` varchar(60) NOT NULL,
   `firstName` varchar(30) NOT NULL,
@@ -149,8 +152,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `city_id`, `role_id`, `email`, `firstName`, `lastName`, `birthday`, `password`, `created_at`) VALUES
-(1, 2, 3, 'admin@o2.pl', 'Janusz', 'Nowak', '2023-12-31', '$argon2id$v=19$m=65536,t=4,p=1$ZkYyQVFleW41V0xWR0ltbg$hUTle0fYvE4Z7nSEjSDzRXan7yz7vQ+x1gavIGX4mDU', '2023-05-21 12:05:12'),
-(2, 1, 1, 'user@o2.pl', 'Janusz', 'Kowal', '2023-12-31', '$argon2id$v=19$m=65536,t=4,p=1$OGllcXByLnptLjhBWmhSTg$7Rg07NNc5ly9igZ3KvDyxcsqIoCJOoJBF/1JWzRVm/s', '2023-05-21 13:51:02');
+(3, 1, 1, 'xxx@xxx.pl', 'xxx', 'xxx', '2000-02-20', '$argon2id$v=19$m=65536,t=4,p=1$QnI2SWJjN0JDeWRsL3AzWQ$6RWmmpxL5Wu4uX/4qaMfLCzB/z6F2+hFJDPIS+jnlgs', '2023-06-08 11:12:13'),
+(4, 1, 2, 'mod@mod.pl', 'mod', 'mod', '2000-02-20', '$argon2id$v=19$m=65536,t=4,p=1$VlJzQVdGZDlCTi9UMXJXcw$FPkLfQIQw2IWvkAOZuEoZDbsL8IicPk9dMLuk5Bdepk', '2023-06-08 12:17:53'),
+(6, NULL, 3, 'admin@admin.pl', 'admin', 'admin', '2000-01-20', '$argon2id$v=19$m=65536,t=4,p=1$ME5weUNtcFdsdTBXNFQuZQ$/Vpi+ROhwCJHR+dPbBwUa8iOpBDKf1FVelY481jSL+0', '2023-06-08 12:49:36');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -186,8 +190,7 @@ ALTER TABLE `roles`
 -- Indeksy dla tabeli `states`
 --
 ALTER TABLE `states`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `country_id` (`country_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `users`
@@ -195,7 +198,6 @@ ALTER TABLE `states`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `city_id` (`city_id`),
   ADD KEY `role_id` (`role_id`);
 
 --
@@ -218,7 +220,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -236,7 +238,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -259,13 +261,6 @@ ALTER TABLE `logs`
 --
 ALTER TABLE `states`
   ADD CONSTRAINT `states_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
