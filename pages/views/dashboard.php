@@ -8,7 +8,7 @@
         $role_path = "logged_user";
         break;
 	    case 2:
-		    $role_path = "logged_moderator";
+		    $role_path = "logged_mod";
 		    break;
 	    case 3:
 		    $role_path = "logged_admin";

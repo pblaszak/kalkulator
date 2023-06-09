@@ -10,7 +10,7 @@ $conn = new mysqli("localhost", "root", "", "baza_danych");
 			<div class="row mb-2">
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item active">Administrator
+						<li class="breadcrumb-item active">Moderator
 						</li>
 					</ol>
 				</div><!-- /.col -->
@@ -64,7 +64,6 @@ $conn = new mysqli("localhost", "root", "", "baza_danych");
 								echo '<td>' . $row['lastName'] . '</td>';
                 				echo '<td>' . $row['role_id'] . '</td>';
 								echo '<td><a href="logged_admin/edit_user.php?id=' . $row['id'] . '">Edytuj</a></td>'; // Przycisk edycji
-								echo '<td><a href="logged_admin/delete_user.php?id=' . $row['id'] . '">Usuń</a></td>'; // Przycisk usuwania
 								echo '</tr>';
 							}
 							?>

@@ -8,7 +8,7 @@
         $role_path = "logged_user";
         break;
 	    case 2:
-		    $role_path = "logged_moderator";
+		    $role_path = "logged_mod";
 		    break;
 	    case 3:
 		    $role_path = "logged_admin";
@@ -32,7 +32,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>Kalkulator Spalania 1.0.0</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
